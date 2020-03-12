@@ -227,7 +227,6 @@ int main()
             }
         }
         else if (comparoString(comando, "equals"))
-
         {
             //declaro variables
             expresionR expR, expR2;
@@ -246,35 +245,26 @@ int main()
                 {
                     int numExp1 = convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,1)));
                     crearIdent(E,numExp1,idaux1);
-                    if (!idValido(idaux1))
-                        printf("Error: El primer parametro no es valido");
+                    int numExp2 = convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,2)));
+                    crearIdent(E,numExp2,idaux2);
+                    if (!existeIdent(idaux1, lexpre))
+                        printf("Error: El primer parametro no existe en la lista de expresiones");
                     else
                     {
-                        //lis = lis->sig;
-                        int numExp2 = convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,2)));
-                        crearIdent(E,numExp2,idaux2);
-                        if (!idValido(idaux2))
-                            printf("Error: El segundo parametro no es valido");
+                        if (!existeIdent(idaux2, lexpre))
+                            printf("Error: El segundo parametro no existe en la lista de expresiones");
                         else
                         {
-                            if (!existeIdent(idaux1, lexpre))
-                                printf("Error: El primer parametro no existe en la lista de expresiones");
+                            obtenerExpresionRDeLista(idaux1, lexpre, expR);
+                            obtenerExpresionRDeLista(idaux2, lexpre, expR2);
+                            arbaux1 = obtenerArbol(expR);
+                            arbaux2 = obtenerArbol(expR2);
+                            if (!comparoArbol(arbaux1, arbaux2))
+                                printf("Resultado: Las expresiones no son iguales");
                             else
-                            {
-                                if (!existeIdent(idaux2, lexpre))
-                                    printf("Error: El primer parametro no existe en la lista de expresiones");
-                                else
-                                {
-                                    obtenerExpresionRDeLista(idaux1, lexpre, expR);
-                                    obtenerExpresionRDeLista(idaux2, lexpre, expR2);
-                                    arbaux1 = obtenerArbol(expR);
-                                    arbaux2 = obtenerArbol(expR2);
-                                    if (!comparoArbol(arbaux1, arbaux2))
-                                        printf("Resultado: Las expresiones no son iguales");
-                                    else
-                                        printf("Resultado: Las expresiones son iguales");
-                                }
-                            }
+                                printf("Resultado: Las expresiones son iguales");
+                            limpiarListaString(lis);
+
                         }
                     }
                 }
