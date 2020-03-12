@@ -14,7 +14,6 @@ int main()
     listaExpre lexpre;
     crearListaExpre(lexpre);
 
-
     do
     {
         printf("\nIngrese comando: ");
@@ -48,7 +47,6 @@ int main()
                     str = obtenerStringPos(lis,1);
                     if(esVariable(str))
                     {
-
                         crearTipoExpresionVariable('x',tipoExpre);
                         cargarArbolAtomico(arb,tipoExpre);
                         cargarExpresionR(id,arb,expR);
@@ -63,7 +61,6 @@ int main()
                         else
                         {
                             int conversion = convertirString(str);
-
                             crearTipoExpresionNumero(conversion,tipoExpre);
                             cargarArbolAtomico(arb,tipoExpre);
                             cargarExpresionR(id,arb,expR);
@@ -84,7 +81,6 @@ int main()
             tipoExpresion tipoExpre;
             expresionR expR, expR2;
             identificador id,id2;
-
             if (contarNodos(lis) != 3)
                 printf("\nSe esperaban dos parametros.");
             else
@@ -143,13 +139,12 @@ int main()
                                 cargarExpresionR (id3, arb, expSuma);
                                 guardarExpreAlFinal(expSuma,lexpre);
                                 mostrarExpresionR(expSuma,TRUE);
-                                limpiarListaString(lis);
                             }
-
                         }
                     }
                 }
             }
+            limpiarListaString(lis);
         }
         else if (comparoString(comando, "product"))
         {
@@ -272,15 +267,16 @@ int main()
         }
         else if (comparoString(comando, "show"))
         {
-            if (esVacia(lexpre))
+            if (contarNodos(lis) != 1)
+                printf("No se esperaban parametros en este comando");
+            else if (esVacia(lexpre))
                 printf ("No hay expresiones que mostrar.");
-            else if (contarNodos (lis) != 1)
-                printf ("No se esperaban parámetros en este comando.");
             else
+                {
                 printf("\nResultado:\n");
-            mostrarListaExpre(lexpre,FALSE);
-            limpiarListaString(lis);
-
+                mostrarListaExpre(lexpre,FALSE);
+                limpiarListaString(lis);
+                }
         }
         else if (comparoString(comando, "eval"))
         {
@@ -367,7 +363,6 @@ int main()
                                         mostrarString (str);
                                         limpiarListaString(lis);
                                         fclose(f);
-
                                     }
                                     else
                                         printf ("\nNo se sobresribira el archivo");
@@ -452,7 +447,7 @@ int main()
                     if(!esVacia(lexpre))
                         borrarListaExpre (lexpre);
                     if (esVacia(lexpre))
-                        printf ("Resultado: hasta la proxima");
+                        printf ("Resultado: hasta la proxima!");
                     salir = TRUE;
                 }
             }
