@@ -1,7 +1,6 @@
 #ifndef ARCHIVO_H_INCLUDED
 #define ARCHIVO_H_INCLUDED
 #include "string.h"
-#include "expresionR.h"
 
 //Levanta a memoria la expresion guardada en el archivo
 /*void levantarArchivo(string nomArch,arbolExpre &arb);*/
