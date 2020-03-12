@@ -159,7 +159,7 @@ int main()
             tipoExpresion tipoExpre;
             expresionR expR, expR2;
             identificador id,id2;
-                        if (contarNodos(lis) != 3)
+            if (contarNodos(lis) != 3)
                 printf("\nSe esperaban dos parametro.");
             else
             {
@@ -227,6 +227,7 @@ int main()
             }
         }
         else if (comparoString(comando, "equals"))
+
         {
             //declaro variables
             expresionR expR, expR2;
@@ -281,7 +282,7 @@ int main()
         }
         else if (comparoString(comando, "show"))
         {
-           if (esVacia(lexpre))
+            if (esVacia(lexpre))
                 printf ("No hay expresiones que mostrar.");
             else if (contarNodos (lis) != 1)
                 printf ("No se esperaban parámetros en este comando.");
@@ -301,7 +302,7 @@ int main()
                 printf("Error: Se esperaban dos parametros");
             else
             {
-                int numExp1 = convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,2)));
+                int numExp1 = convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,1)));
                 crearIdent(E,numExp1,id);
                 if (!idValido(id))
                     printf("Error: La expresion no es valida");
@@ -310,18 +311,20 @@ int main()
                     if (!existeIdent(id, lexpre))
                         printf("Error: La expresion no existe en la lista de expresiones");
                     else
-                        lis = lis->sig;
-                    string numEval = lis->info;
-                    if (!esNumero(numEval))
-                        printf("Error: Se esperaba un numero como segundo parametro");
-                    else
                     {
-                        obtenerExpresionRDeLista(id,lexpre,expR);
-                        printf ("\nResultado: %d", evaluoArbol(obtenerArbol(expR), convertirString (numEval)));
+                        string numEval = obtenerStringPos(lis,2);
+                        if (!esNumero(numEval))
+                            printf("Error: Se esperaba un numero como segundo parametro");
+                        else
                         {
+                            obtenerExpresionRDeLista(id,lexpre,expR);
+                            printf ("\nResultado: %d", evaluoArbol(obtenerArbol(expR), convertirString (numEval)));
+
                             limpiarListaString(lis);
+
                         }
                     }
+
                 }
             }
         }
