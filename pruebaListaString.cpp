@@ -197,4 +197,6 @@ int mainListaString()
             break;
         }
     }
+    
+    return 1;
 }

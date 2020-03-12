@@ -452,7 +452,7 @@ int mainPruebaString()
     mostrarString(s13);
 
 
-
+    return 1;
 
 }
 

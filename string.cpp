@@ -44,7 +44,7 @@ void mostrarString (string s)
 void liberarMemoriaString (string &s)
 {
     delete [] s ;
-    s = NULL;
+    strCrear(s);
 }
 
 ///Escribe en el archivo los caracteres del string s (incluido '\0')
