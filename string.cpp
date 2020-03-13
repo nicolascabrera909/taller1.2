@@ -293,7 +293,7 @@ void strcon(string &texto1,string texto2)
 
 }
 
-//verifico si el nombre de la variable es valido
+//separo los numero de un string
 string cortoNumeroDeExpresion(string s)
 {
     string resultado;
@@ -311,3 +311,19 @@ string cortoNumeroDeExpresion(string s)
     return resultado;
 }
 
+//separo la letra de un string
+string cortoLetraDeExpresion (string s)
+{
+    string resultado;
+    strCrear(resultado);
+    int i=0;
+    while(s[i]!='\0')
+    {
+        if(s[i]=='e')
+        {
+            agregoCharAString(s[i],resultado);
+        }
+        i++;
+    }
+    return resultado;
+}

@@ -58,7 +58,10 @@ void agregoCharAString(char a, string &s);
 //CONCATENO STRING, SEGUNDO EN EL PRIMERO
 void strcon(string & texto1,string texto2);
 
-//verifico si el nombre de la variable es valido
-string cortoNumeroDeExpresion(string s);
+//separo el numero de un string
+string cortoNumeroDeExpresion (string s);
+
+//separo la letra de un string
+string cortoLetraDeExpresion (string s);
 
 #endif // STRING_H_INCLUDED

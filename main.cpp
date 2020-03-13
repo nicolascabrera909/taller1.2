@@ -454,7 +454,7 @@ int main()
             limpiarListaString(lis);
         }
         else
-            printf ("\nNo es un comando valido, digite nuevamente");
+            printf ("No es un comando valido, digite nuevamente\n");
         limpiarListaString(lis);
     }
     while (!salir);
