@@ -40,6 +40,17 @@ void mostrarString (string s)
     }
 }
 
+//Mostrar string por pantalla
+boolean stringVacio (string s)
+{
+
+    boolean resultado=FALSE;
+    //Soliciar en el main lo que se quiere mostrar
+    if(s [0] == '\0')
+        resultado=TRUE;
+    return resultado;
+}
+
 //Libera memoria dinamica del string
 void liberarMemoriaString (string &s)
 {

@@ -14,6 +14,9 @@ void cargarString (string &s);
 // mostrar string
 void mostrarString (string s);
 
+//Mostrar string por pantalla
+boolean stringVacio (string s);
+
 //Compara dos strings si son iguales
 boolean comparoString (string s1, string s2);
 
