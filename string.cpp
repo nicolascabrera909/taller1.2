@@ -177,7 +177,7 @@ boolean esVariable (string s)
 boolean esNumero (string s)
 {
     int i = 0;
-    boolean valido = FALSE ;
+    boolean valido = FALSE;
     while (s[i] != '\0' && s[i] != '-' && !valido)
     {
         if ( s[i] <58 && s[i] >47 )
@@ -186,6 +186,26 @@ boolean esNumero (string s)
         }
         else
             i++;
+    }
+    return valido;
+}
+
+//Devuelve si la letra es "e" o no
+boolean esLetraE (string s)
+{
+    int i = 0, contador = 0;
+    boolean valido = TRUE;
+    while (s[i] != '\0')
+    {
+        if (s[i] != 'e')
+            valido = FALSE;
+        else
+        {
+            contador++;
+            i++;
+        }
+        if (contador != 1)
+            valido = FALSE;
     }
     return valido;
 }
