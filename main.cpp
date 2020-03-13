@@ -420,7 +420,7 @@ int main()
                                             fclose(f);
                                         }
                                         else
-                                            printf ("No se sobresribira el archivo\n");
+                                            printf ("No se sobrescribira el archivo\n");
                                     }
                                     else
                                     {
