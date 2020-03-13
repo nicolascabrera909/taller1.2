@@ -493,7 +493,6 @@ int main()
             }
             else if (comparoString(comando, "quit"))
             {
-
                 if (contarNodos(lis) != 1)
                     printf ("No se esperaba ningun parametro\n");
                 else
@@ -530,7 +529,7 @@ int main()
             limpiarListaString(lis);
         }
         else
-            printf ("\nNo ha digitado ningun comando, por favor ingrese un parametro. \nPor mas informacion digite help\n");
+            printf ("\nNo ha digitado ningun comando, por favor ingrese uno. \nPor mas informacion digite help\n");
     }
     while (!salir);
 }
