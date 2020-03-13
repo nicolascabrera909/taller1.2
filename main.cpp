@@ -60,6 +60,9 @@ int main()
                         if (strlar(str) > 10)
                             printf ("Error: numero demasiado largo\n");
                         else
+                          if (!esNumero(str))
+                            printf ("Error: se esperaba un numero mayor que cero");
+                          else
                         {
                             int conversion = convertirString(str);
                             crearTipoExpresionNumero(conversion,tipoExpre);
@@ -301,9 +304,9 @@ int main()
                     {
                         string numEval = obtenerStringPos(lis,2);
                         if (!esNumero(numEval))
-                            printf("Error: Se esperaba un numero como segundo parametro\n");
+                            printf("Error: Se esperaba un numero mayor a cero como segundo parametro\n");
                         else
-                        {
+                          {
                             obtenerExpresionRDeLista(id,lexpre,expR);
                             printf ("Resultado: %d\n", evaluoArbol(obtenerArbol(expR), convertirString (numEval)));
                             limpiarListaString(lis);
@@ -331,62 +334,66 @@ int main()
                         printf("Error: La expresion no existe en la lista de expresiones\n");
                     else
                     {
-                        lis = lis->sig->sig;
-                        str = lis->info;
-                        if (!esAlfanumerico(str))
-                            printf("Error: El nombre de archivo no es valido\n");
+                        //lis = lis->sig->sig;
+                        //str = lis->info;
+                        str = obtenerStringPos(lis,2);
+                        if (!contarPuntos(str))
+                          printf ("\nError: nombre de archivo no valido");
                         else
-                        {
-                            if (!extensionValida(str))
-                                printf ("\nFormato de archivo no valido\n");
-                            else
-                            {
-                                if (existeArchivo(str))
-                                {
-                                    printf ("\nEl archivo ya existe, desea sobrescribirlo (S/N)? ");
-                                    char opc;
-                                    scanf ("%c",&opc);
-                                    fflush (stdin);
-                                    if (cargarBooleano(opc))
-                                    {
-                                        obtenerExpresionRDeLista(aux1,lexpre,expR);
-                                        arbolExpre auxArbol=obtenerArbol(expR);
-                                        int n=0;
-                                        numerarNodos(auxArbol,n);
-                                        FILE * f = fopen (str, "wb");
-                                        bajarExpR(expR, f);
-                                        mostrarIdentificador (aux1);
-                                        printf (" almacenada correctamente en ");
-                                        mostrarString (str);
-                                        printf("\n");
-                                        limpiarListaString(lis);
-                                        fclose(f);
-                                    }
-                                    else
-                                        printf ("No se sobresribira el archivo\n");
-                                }
-                                else
-                                {
-                                    obtenerExpresionRDeLista(aux1,lexpre,expR);
-                                    arbolExpre auxArbol=obtenerArbol(expR);
-                                    int n=0;
-                                    numerarNodos(auxArbol,n);
-                                    FILE * f = fopen (str, "wb");
-                                    bajarExpR(expR, f);
-                                    //sobrescribirArchivo (str, expR);
-                                    mostrarIdentificador (aux1);
-                                    printf (" almacenada correctamente en ");
-                                    mostrarString (str);
-                                    printf("\n");
-                                    limpiarListaString(lis);
-                                    fclose(f);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+                          if (!esAlfanumerico(str))
+                              printf("Error: El nombre de archivo no es valido\n");
+                          else
+                          {
+                              if (!extensionValida(str))
+                                  printf ("\nFormato de archivo no valido\n");
+                              else
+                              {
+                                  if (existeArchivo(str))
+                                  {
+                                      printf ("\nEl archivo ya existe, desea sobrescribirlo (S/N)? ");
+                                      char opc;
+                                      scanf ("%c",&opc);
+                                      fflush (stdin);
+                                      if (cargarBooleano(opc))
+                                      {
+                                          obtenerExpresionRDeLista(aux1,lexpre,expR);
+                                          arbolExpre auxArbol=obtenerArbol(expR);
+                                          int n=0;
+                                          numerarNodos(auxArbol,n);
+                                          FILE * f = fopen (str, "wb");
+                                          bajarExpR(expR, f);
+                                          mostrarIdentificador (aux1);
+                                          printf (" almacenada correctamente en ");
+                                          mostrarString (str);
+                                          printf("\n");
+                                          limpiarListaString(lis);
+                                          fclose(f);
+                                      }
+                                      else
+                                          printf ("No se sobresribira el archivo\n");
+                                  }
+                                  else
+                                  {
+                                      obtenerExpresionRDeLista(aux1,lexpre,expR);
+                                      arbolExpre auxArbol=obtenerArbol(expR);
+                                      int n=0;
+                                      numerarNodos(auxArbol,n);
+                                      FILE * f = fopen (str, "wb");
+                                      bajarExpR(expR, f);
+                                      //sobrescribirArchivo (str, expR);
+                                      mostrarIdentificador (aux1);
+                                      printf (" almacenada correctamente en ");
+                                      mostrarString (str);
+                                      printf("\n");
+                                      limpiarListaString(lis);
+                                      fclose(f);
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
         else if(comparoString(comando, "load"))
         {
             //declaro variables

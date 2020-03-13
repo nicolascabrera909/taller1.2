@@ -149,7 +149,6 @@ int convertirString (string s)
             numero = numero + ((s[i] - 48) * potencia (10, num - 1 - i));
         }
     }
-
     return numero;
 }
 
@@ -163,12 +162,12 @@ boolean esVariable (string s)
         return FALSE;
 }
 
-//Devuelve si es un numero o no
+//Devuelve si es un numero valido o no
 boolean esNumero (string s)
 {
     int i = 0;
     boolean valido = FALSE ;
-    while (s[i] != '\0' && !valido)
+    while (s[i] != '\0' && s[i] != '-' && !valido)
     {
         if ( s[i] <58 && s[i] >47 )
         {
@@ -181,7 +180,7 @@ boolean esNumero (string s)
 }
 
 //Verifico si el nombre es alfanumérico
-boolean esAlfanumerico(string s)
+/*boolean esAlfanumerico(string s)
 {
     int i = 0;
     boolean letra=FALSE;
@@ -209,10 +208,22 @@ boolean esAlfanumerico(string s)
         alfanumerico=TRUE;
 
     return alfanumerico;
+}*/
+
+boolean esAlfanumerico(string s)
+{
+    int i = 0;
+    while (s[i] != '\0' &&  s[i]!=46)
+    {
+      if (((64 < s[i] && s[i] < 91) || (96 < s[i] && s[i]< 123) || (47 < s[i] && s[i] < 58)))
+        i++;
+      else
+        return FALSE;
+    }
 }
 
 //Verificó extensión del archivo es .dat
-boolean extensionValida(string s1)
+/*boolean extensionValida(string s1)
 {
     string sAux;
     strCrear (sAux);
@@ -234,10 +245,31 @@ boolean extensionValida(string s1)
         valido = comparoString (sAux, s2);
     }
     return valido;
+}*/
+
+boolean extensionValida(string s1)
+{
+    string sAux;
+    strCrear (sAux);
+    int i = (strlar (s1)) - 4;
+    int j=0;
+    boolean valido = FALSE;
+    while (s1[i] != '\0' )
+      {
+          sAux[j] = s1[i];
+          i++;
+          j++;
+      }
+    sAux[j]='\0';
+    string s2;
+    strCrear(s2);
+    s2 = ".dat";
+    valido = comparoString (sAux, s2);
+    return valido;
 }
 
 //Contar puntos en el nombre del archivo
-boolean contarPuntos(string s)
+/*boolean contarPuntos(string s)
 {
     int i=0;
     boolean resultado=FALSE;
@@ -251,6 +283,21 @@ boolean contarPuntos(string s)
     if(contador==1)
         resultado=TRUE;
     return resultado;
+}*/
+
+boolean contarPuntos(string s)
+{
+  int i = 0, puntos = 0;
+  while (s[i] != '\0' && puntos != 2)
+    {
+      if (s[i] == '.')
+        puntos + 1;
+      i++;
+    }
+  if (puntos > 1)
+    return FALSE;
+  else
+    return TRUE;
 }
 
 // agrego de a un carater a un string
