@@ -519,7 +519,7 @@ int main()
                 printf ("\n\n- product ident1 ident2 - realiza el producto\n de dos expresiones existentes generando una nueva expresion:\n  ejemplo product e1 e2");
                 printf ("\n\n- equals ident1 ident2 - verifica si dos \nexpresiones existentes son iguales:\n  ejemplo equals e1 e2");
                 printf ("\n\n- show - muestra por pantalla las expresiones\n existentes en el sistema");
-                printf ("\n\n- eval ident valor - calcula el valor de la\n expresión:\n  ejemplo: eval e2 5");
+                printf ("\n\n- eval ident valor - calcula el valor de la\n expresion:\n  ejemplo: eval e2 5");
                 printf ("\n\n- create parametro - crea nuevas expresiones: \n  ejemplo create 2 ");
                 printf ("\n\n- save ident nombreArchivo.dat - guarda la \nexpresion que pasamos por parametro en un archivo:\n  ejemplo save e1 miexpresion.dat");
                 printf ("\n\n- load nombreArchivo.dat - carga en memoria\n los datos contenidos en el archivo elegido:\n  ejemplo load miexpresion.dat");
