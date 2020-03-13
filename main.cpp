@@ -444,7 +444,7 @@ int main()
                     }
                 }
             }
-            else if(comparoString(comando, "load"))
+            else if (comparoString(comando, "load"))
             {
                 //declaro variables
                 expresionR expR;
