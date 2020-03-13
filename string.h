@@ -43,6 +43,9 @@ boolean esVariable (string s);
 //Devuelve si es un numero o no
 boolean esNumero (string s);
 
+//Devuelve si la letra es e o no
+boolean esLetraE (string s);
+
 //Libera memoria dinamica del string
 void liberarMemoriaString (string &s);
 

@@ -451,6 +451,13 @@ int mainPruebaString()
     printf("\nString luego de la funcion:\n");
     mostrarString(s13);
 
+    printf("\nPruebo cortoLetraDeExpresion");
+    s13=cortoLetraDeExpresion(s12);
+    printf("\nString original:\n");
+    mostrarString(s12);
+    printf("\nString luego de la funcion:\n");
+    mostrarString(s13);
+
 
     return 1;
 

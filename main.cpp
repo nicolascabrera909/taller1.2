@@ -98,11 +98,13 @@ int main()
                         printf("No existen expresiones creadas\n");
                     else
                     {
-                        string stringpos1, numexpre1;
+                        string stringpos1, numexpre1, letraexpre1;
                         strCrear(stringpos1);
                         strCrear(numexpre1);
+                        strCrear(letraexpre1);
                         stringpos1 = obtenerStringPos(lis,1);
                         numexpre1 = cortoNumeroDeExpresion(stringpos1);
+                        letraexpre1 = cortoLetraDeExpresion(stringpos1);
                         if(!esNumero(numexpre1))
                             printf("Error: La primera expresion no existe en la lista de expresiones\n");
                         else
@@ -446,7 +448,7 @@ int main()
                 }
                 limpiarListaString(lis);
             }
-            else if(comparoString(comando, "load"))
+            else if (comparoString(comando, "load"))
             {
                 //declaro variables
                 expresionR expR;
