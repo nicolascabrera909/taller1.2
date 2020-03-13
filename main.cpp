@@ -385,26 +385,44 @@ int main()
                             printf("Error: La expresion no existe en la lista de expresiones\n");
                         else
                         {
-                            //lis = lis->sig->sig;
-                            //str = lis->info;
                             str = obtenerStringPos(lis,2);
                             if (!contarPuntos(str))
                                 printf ("Error: nombre de archivo no valido\n");
-                            else if (!esAlfanumerico(str))
-                                printf("Error: nombre de archivo no es valido\n");
                             else
                             {
-                                if (!extensionValida(str))
-                                    printf ("\nFormato de archivo no valido\n");
+                                if (!esAlfanumerico(str))
+                                    printf("Error: nombre de archivo no es valido en es alfanumerico\n");
                                 else
                                 {
-                                    if (existeArchivo(str))
+                                    if (!extensionValida(str))
+                                        printf ("\nFormato de archivo no valido\n");
+                                    else
                                     {
-                                        printf ("\nEl archivo ya existe, desea sobrescribirlo (S/N)? ");
-                                        char opc;
-                                        scanf ("%c",&opc);
-                                        fflush (stdin);
-                                        if (cargarBooleano(opc))
+                                        if (existeArchivo(str))
+                                        {
+                                            printf ("\nEl archivo ya existe, desea sobrescribirlo (S/N)? ");
+                                            char opc;
+                                            scanf ("%c",&opc);
+                                            fflush (stdin);
+                                            if (cargarBooleano(opc))
+                                            {
+                                                obtenerExpresionRDeLista(aux1,lexpre,expR);
+                                                arbolExpre auxArbol=obtenerArbol(expR);
+                                                int n=0;
+                                                numerarNodos(auxArbol,n);
+                                                FILE * f = fopen (str, "wb");
+                                                bajarExpR(expR, f);
+                                                mostrarIdentificador (aux1);
+                                                printf (" almacenada correctamente en ");
+                                                mostrarString (str);
+                                                printf("\n");
+                                                limpiarListaString(lis);
+                                                fclose(f);
+                                            }
+                                            else
+                                                printf ("No se sobrescribira el archivo\n");
+                                        }
+                                        else
                                         {
                                             obtenerExpresionRDeLista(aux1,lexpre,expR);
                                             arbolExpre auxArbol=obtenerArbol(expR);
@@ -412,6 +430,7 @@ int main()
                                             numerarNodos(auxArbol,n);
                                             FILE * f = fopen (str, "wb");
                                             bajarExpR(expR, f);
+                                            //sobrescribirArchivo (str, expR);
                                             mostrarIdentificador (aux1);
                                             printf (" almacenada correctamente en ");
                                             mostrarString (str);
@@ -419,30 +438,13 @@ int main()
                                             limpiarListaString(lis);
                                             fclose(f);
                                         }
-                                        else
-                                            printf ("No se sobrescribira el archivo\n");
-                                    }
-                                    else
-                                    {
-                                        obtenerExpresionRDeLista(aux1,lexpre,expR);
-                                        arbolExpre auxArbol=obtenerArbol(expR);
-                                        int n=0;
-                                        numerarNodos(auxArbol,n);
-                                        FILE * f = fopen (str, "wb");
-                                        bajarExpR(expR, f);
-                                        //sobrescribirArchivo (str, expR);
-                                        mostrarIdentificador (aux1);
-                                        printf (" almacenada correctamente en ");
-                                        mostrarString (str);
-                                        printf("\n");
-                                        limpiarListaString(lis);
-                                        fclose(f);
                                     }
                                 }
                             }
                         }
                     }
                 }
+                limpiarListaString(lis);
             }
             else if(comparoString(comando, "load"))
             {
@@ -500,6 +502,7 @@ int main()
                     char opcion;
                     printf ("Desea salir del programa? S/N: ");
                     scanf ("%c",&opcion);
+                    fflush (stdin);
                     if (cargarBooleano(opcion))
                     {
                         if(!esVacia(lexpre))
@@ -514,14 +517,14 @@ int main()
             {
                 printf ("\nComandos disponibles:");
                 printf ("\n\n- create parametro - crea nuevas expresiones: \n  ejemplo create 2 ");
-                printf ("\n\n- sum ident1 ident2 - suma dos expresiones \nexistentes generando una nueva expresion: \n  ejemplo sum e1 e2");
-                printf ("\n\n- product ident1 ident2 - realiza el producto\n de dos expresiones existentes generando una nueva expresion:\n  ejemplo product e1 e2");
-                printf ("\n\n- equals ident1 ident2 - verifica si dos \nexpresiones existentes son iguales:\n  ejemplo equals e1 e2");
-                printf ("\n\n- show - muestra por pantalla las expresiones\n existentes en el sistema");
-                printf ("\n\n- eval ident valor - calcula el valor de la\n expresion:\n  ejemplo: eval e2 5");
-                printf ("\n\n- create parametro - crea nuevas expresiones: \n  ejemplo create 2 ");
-                printf ("\n\n- save ident nombreArchivo.dat - guarda la \nexpresion que pasamos por parametro en un archivo:\n  ejemplo save e1 miexpresion.dat");
-                printf ("\n\n- load nombreArchivo.dat - carga en memoria\n los datos contenidos en el archivo elegido:\n  ejemplo load miexpresion.dat");
+                printf ("\n\n- sum ident1 ident2 - suma dos expresiones existentes generando una nueva expresion: \n  ejemplo sum e1 e2");
+                printf ("\n\n- product ident1 ident2 - realiza el producto de dos expresiones existentes generando una nueva expresion: \n  ejemplo product e1 e2");
+                printf ("\n\n- equals ident1 ident2 - verifica si dos expresiones existentes son iguales: \n  ejemplo equals e1 e2");
+                printf ("\n\n- show - muestra por pantalla las expresiones existentes en el sistema");
+                printf ("\n\n- eval ident valor - calcula el valor de la expresion: \n  ejemplo: eval e2 5");
+                printf ("\n\n- create parametro - crea nuevas expresiones: \n  ejemplo create 2");
+                printf ("\n\n- save ident nombreArchivo.dat - guarda la expresion que pasamos por parametro en un archivo: \n  ejemplo save e1 miexpresion.dat");
+                printf ("\n\n- load nombreArchivo.dat - carga en memoria los datos contenidos en el archivo elegido: \n  ejemplo load miexpresion.dat");
                 printf ("\n\n- quit - salir del programa\n");
             }
             else

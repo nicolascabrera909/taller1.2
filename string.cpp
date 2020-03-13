@@ -180,7 +180,7 @@ boolean esNumero (string s)
     boolean valido = FALSE ;
     while (s[i] != '\0' && s[i] != '-' && !valido)
     {
-        if ( s[i] <58 && s[i] >47 )
+        if ( s[i] < 58 && s[i] > 47 )
         {
             valido = TRUE;
         }
@@ -285,7 +285,7 @@ boolean extensionValida(string s1)
     int i=0;
     boolean resultado=FALSE;
     int contador=0;
-    while (s[i]!='\0' || !contador>1 )
+    while (s[i]!='\0' && !contador>1 )
     {
         if(s[i]=='.')
             contador++;
@@ -302,13 +302,13 @@ boolean contarPuntos(string s)
   while (s[i] != '\0' && puntos != 2)
     {
       if (s[i] == '.')
-        puntos + 1;
+        puntos++;
       i++;
     }
-  if (puntos > 1)
-    return FALSE;
+  if (puntos == 1)
+    return TRUE; //no supera la cantidad maxima
   else
-    return TRUE;
+    return FALSE; //upera la cantidad maxima
 }
 
 // agrego de a un carater a un string
