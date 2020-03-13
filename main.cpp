@@ -36,15 +36,19 @@ int main()
                 else
                 {
                     int contador=0;
-                    if (esVariable(obtenerStringPos(lis,1)))
+                    string stringpos;
+                    strCrear(stringpos);
+                    stringpos = obtenerStringPos(lis,1);
+                    if (esVariable(stringpos))
                         contador++;
-                    if (esNumero(obtenerStringPos(lis,1)))
+                    if (esNumero(stringpos))
                         contador++;
                     if(contador!=1)
                         printf("Se esperaba una x o un numero entero\n");
                     else
                     {
-                        crearIdent(E,(maxId(lexpre)+1),id);
+                        int maximo = maxId(lexpre)+1;
+                        crearIdent(E,maximo,id);
                         str = obtenerStringPos(lis,1);
                         if(esVariable(str))
                         {
@@ -94,16 +98,27 @@ int main()
                         printf("No existen expresiones creadas\n");
                     else
                     {
-                        if(!esNumero(cortoNumeroDeExpresion(obtenerStringPos(lis,1))))
+                        string stringpos1, numexpre1;
+                        strCrear(stringpos1);
+                        strCrear(numexpre1);
+                        stringpos1 = obtenerStringPos(lis,1);
+                        numexpre1 = cortoNumeroDeExpresion(stringpos1);
+                        if(!esNumero(numexpre1))
                             printf("Error: La primera expresion no existe en la lista de expresiones\n");
                         else
                         {
-                            if(!esNumero(cortoNumeroDeExpresion(obtenerStringPos(lis,2))))
+                            string stringpos2, numexpre2;
+                            strCrear(stringpos2);
+                            strCrear(numexpre2);
+                            stringpos2 = obtenerStringPos(lis,2);
+                            numexpre2 = cortoNumeroDeExpresion(stringpos2);
+                            if(!esNumero(numexpre2))
                                 printf("Error: La segunda expresion no existe en la lista de expresiones\n");
                             else
                             {
-                                crearIdent(obtenerStringPos(lis,1)[0],convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,1))),id);
-                                crearIdent(obtenerStringPos(lis,2)[0],convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,2))),id2);
+                                int conversion1 = convertirString(numexpre1), conversion2 = convertirString(numexpre2);
+                                crearIdent(stringpos1[0],conversion1,id);
+                                crearIdent(stringpos2[0],conversion2,id2);
                                 int bandera=0;
                                 if(existeIdent(id,lexpre))
                                     bandera=bandera+1;
@@ -126,15 +141,20 @@ int main()
                                     obtenerExpresionRDeLista(id,lexpre,expR);
                                     obtenerExpresionRDeLista(id2,lexpre,expR2);
                                     crearTipoExpresionOperador('+',tipoExpre);
-                                    arbolExpre newArbol1, newArbol2;
+                                    arbolExpre arbol1, arbol2, newArbol1, newArbol2;
+                                    crearArbol(arbol1);
+                                    crearArbol(arbol2);
                                     crearArbol(newArbol1);
                                     crearArbol(newArbol2);
-                                    copiarTodosLosNodos(obtenerArbol(expR),newArbol1);
-                                    copiarTodosLosNodos(obtenerArbol(expR2),newArbol2);
+                                    arbol1 = obtenerArbol(expR);
+                                    arbol2 = obtenerArbol(expR2);
+                                    copiarTodosLosNodos(arbol1,newArbol1);
+                                    copiarTodosLosNodos(arbol2,newArbol2);
                                     cargarArbolNoAtomico(arb,tipoExpre,newArbol1,newArbol2);
                                     //creo la expre resultante, el nuevo identificador, la expresion y lo  agregoa la lista
                                     identificador id3;
-                                    crearIdent(E,(maxId(lexpre)+1),id3);
+                                    int maximo = maxId(lexpre)+1;
+                                    crearIdent(E,maximo,id3);
                                     tipoExpresion parIzq, parDer;
                                     crearTipoExpresionParentesis('(',parIzq);
                                     crearTipoExpresionParentesis(')',parDer);
