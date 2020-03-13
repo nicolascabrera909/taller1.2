@@ -389,9 +389,9 @@ int main()
                             //str = lis->info;
                             str = obtenerStringPos(lis,2);
                             if (!contarPuntos(str))
-                                printf ("\nError: nombre de archivo no valido");
+                                printf ("Error: nombre de archivo no valido\n");
                             else if (!esAlfanumerico(str))
-                                printf("Error: El nombre de archivo no es valido\n");
+                                printf("Error: nombre de archivo no es valido\n");
                             else
                             {
                                 if (!extensionValida(str))
