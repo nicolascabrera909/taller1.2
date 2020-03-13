@@ -31,7 +31,7 @@ int main()
             identificador id;
 
             if (contarNodos(lis) != 2)
-                printf("\nSe esperaba un parametro luego del comando.");
+                printf("Se esperaba un parametro luego del comando\n");
             else
             {
                 int contador=0;
@@ -40,7 +40,7 @@ int main()
                 if (esNumero(obtenerStringPos(lis,1)))
                     contador++;
                 if(contador!=1)
-                    printf("\nSe esperaba una x o un numero entero.");
+                    printf("Se esperaba una x o un numero entero\n");
                 else
                 {
                     crearIdent(E,(maxId(lexpre)+1),id);
@@ -52,12 +52,13 @@ int main()
                         cargarExpresionR(id,arb,expR);
                         guardarExpreAlFinal(expR,lexpre);
                         mostrarExpresionR(expR,TRUE);
+                        printf("\n");
                         limpiarListaString(lis);
                     }
                     else
                     {
                         if (strlar(str) > 10)
-                            printf ("Error: numero demasiado largo");
+                            printf ("Error: numero demasiado largo\n");
                         else
                         {
                             int conversion = convertirString(str);
@@ -66,6 +67,7 @@ int main()
                             cargarExpresionR(id,arb,expR);
                             guardarExpreAlFinal(expR,lexpre);
                             mostrarExpresionR(expR,TRUE);
+                            printf("\n");
                             limpiarListaString(lis);
                         }
                     }
@@ -82,22 +84,21 @@ int main()
             expresionR expR, expR2;
             identificador id,id2;
             if (contarNodos(lis) != 3)
-                printf("\nSe esperaban dos parametros.");
+                printf("Se esperaban dos parametros\n");
             else
             {
                 if(esVacia(lexpre))
-                    printf("\nNo existen expresiones creadas.");
+                    printf("No existen expresiones creadas\n");
                 else
                 {
                     if(!esNumero(cortoNumeroDeExpresion(obtenerStringPos(lis,1))))
-                        printf("\nError: La primera expresion no existe en la lista de expresiones");
+                        printf("Error: La primera expresion no existe en la lista de expresiones\n");
                     else
                     {
                         if(!esNumero(cortoNumeroDeExpresion(obtenerStringPos(lis,2))))
-                            printf("\nError: La segunda expresion no existe en la lista de expresiones");
+                            printf("Error: La segunda expresion no existe en la lista de expresiones\n");
                         else
                         {
-
                             crearIdent(obtenerStringPos(lis,1)[0],convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,1))),id);
                             crearIdent(obtenerStringPos(lis,2)[0],convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,2))),id2);
                             int bandera=0;
@@ -108,13 +109,13 @@ int main()
                             switch(bandera)
                             {
                             case 0:
-                                printf("Error: las expresiones no existen");
+                                printf("Error: las expresiones no existen\n");
                                 break;
                             case 1:
-                                printf("Error: la segunda expresion no existe");
+                                printf("Error: la segunda expresion no existe\n");
                                 break;
                             case 2:
-                                printf("Error: la primera expresion no existe");
+                                printf("Error: la primera expresion no existe\n");
                                 break;
                             }
                             if(bandera==3)
@@ -139,6 +140,7 @@ int main()
                                 cargarExpresionR (id3, arb, expSuma);
                                 guardarExpreAlFinal(expSuma,lexpre);
                                 mostrarExpresionR(expSuma,TRUE);
+                                printf("\n");
                             }
                         }
                     }
@@ -155,22 +157,21 @@ int main()
             expresionR expR, expR2;
             identificador id,id2;
             if (contarNodos(lis) != 3)
-                printf("\nSe esperaban dos parametro.");
+                printf("Se esperaban dos parametros\n");
             else
             {
                 if(esVacia(lexpre))
-                    printf("\nNo existen expresiones creadas");
+                    printf("No existen expresiones creadas\n");
                 else
                 {
                     if(!esNumero(cortoNumeroDeExpresion(obtenerStringPos(lis,1))))
-                        printf("\nError: la primera expresion no es correcta");
+                        printf("Error: la primera expresion no es correcta\n");
                     else
                     {
                         if(!esNumero(cortoNumeroDeExpresion(obtenerStringPos(lis,2))))
-                            printf("\nError: la segunda expresion no es correcta");
+                            printf("Error: la segunda expresion no es correcta\n");
                         else
                         {
-
                             crearIdent(obtenerStringPos(lis,1)[0],convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,1))),id);
                             crearIdent(obtenerStringPos(lis,2)[0],convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,2))),id2);
                             int bandera=0;
@@ -181,13 +182,13 @@ int main()
                             switch(bandera)
                             {
                             case 0:
-                                printf("Error: las expresiones no existen");
+                                printf("Error: las expresiones no existen\n");
                                 break;
                             case 1:
-                                printf("Error: la segunda expresion no existe");
+                                printf("Error: la segunda expresion no existe\n");
                                 break;
                             case 2:
-                                printf("Error: la primera expresion no existe");
+                                printf("Error: la primera expresion no existe\n");
                                 break;
                             }
                             if(bandera==3)
@@ -212,6 +213,7 @@ int main()
                                 cargarExpresionR (id3, arb, expSuma);
                                 guardarExpreAlFinal(expSuma,lexpre);
                                 mostrarExpresionR(expSuma,TRUE);
+                                printf("\n");
                                 limpiarListaString(lis);
                             }
 
@@ -231,11 +233,11 @@ int main()
             crearArbol(arbaux2);
 
             if (contarNodos(lis) != 3)
-                printf("Error: Se esperaban dos parametros");
+                printf("Error: Se esperaban dos parametros\n");
             else
             {
                 if(esVacia(lexpre))
-                    printf("No existen expresiones creadas");
+                    printf("No existen expresiones creadas\n");
                 else
                 {
                     int numExp1 = convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,1)));
@@ -243,11 +245,11 @@ int main()
                     int numExp2 = convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,2)));
                     crearIdent(E,numExp2,idaux2);
                     if (!existeIdent(idaux1, lexpre))
-                        printf("Error: El primer parametro no existe en la lista de expresiones");
+                        printf("Error: El primer parametro no existe en la lista de expresiones\n");
                     else
                     {
                         if (!existeIdent(idaux2, lexpre))
-                            printf("Error: El segundo parametro no existe en la lista de expresiones");
+                            printf("Error: El segundo parametro no existe en la lista de expresiones\n");
                         else
                         {
                             obtenerExpresionRDeLista(idaux1, lexpre, expR);
@@ -255,11 +257,10 @@ int main()
                             arbaux1 = obtenerArbol(expR);
                             arbaux2 = obtenerArbol(expR2);
                             if (!comparoArbol(arbaux1, arbaux2))
-                                printf("Resultado: Las expresiones no son iguales");
+                                printf("Resultado: Las expresiones no son iguales\n");
                             else
-                                printf("Resultado: Las expresiones son iguales");
+                                printf("Resultado: Las expresiones son iguales\n");
                             limpiarListaString(lis);
-
                         }
                     }
                 }
@@ -268,9 +269,9 @@ int main()
         else if (comparoString(comando, "show"))
         {
             if (contarNodos(lis) != 1)
-                printf("No se esperaban parametros en este comando");
+                printf("No se esperaban parametros en este comando\n");
             else if (esVacia(lexpre))
-                printf ("No hay expresiones que mostrar.");
+                printf ("No hay expresiones que mostrar\n");
             else
                 {
                 printf("\nResultado:\n");
@@ -285,32 +286,29 @@ int main()
             identificador id;
 
             if (contarNodos(lis) != 3)
-                printf("Error: Se esperaban dos parametros");
+                printf("Error: Se esperaban dos parametros\n");
             else
             {
                 int numExp1 = convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,1)));
                 crearIdent(E,numExp1,id);
                 if (!idValido(id))
-                    printf("Error: La expresion no es valida");
+                    printf("Error: La expresion no es valida\n");
                 else
                 {
                     if (!existeIdent(id, lexpre))
-                        printf("Error: La expresion no existe en la lista de expresiones");
+                        printf("Error: La expresion no existe en la lista de expresiones\n");
                     else
                     {
                         string numEval = obtenerStringPos(lis,2);
                         if (!esNumero(numEval))
-                            printf("Error: Se esperaba un numero como segundo parametro");
+                            printf("Error: Se esperaba un numero como segundo parametro\n");
                         else
                         {
                             obtenerExpresionRDeLista(id,lexpre,expR);
-                            printf ("\nResultado: %d", evaluoArbol(obtenerArbol(expR), convertirString (numEval)));
-
+                            printf ("Resultado: %d\n", evaluoArbol(obtenerArbol(expR), convertirString (numEval)));
                             limpiarListaString(lis);
-
                         }
                     }
-
                 }
             }
         }
@@ -320,34 +318,33 @@ int main()
             expresionR expR;
 
             if (contarNodos(lis) != 3)
-                printf("Error: Se esperaban dos parametros");
+                printf("Error: Se esperaban dos parametros\n");
             else
             {
                 identificador aux1;
                 crearIdent(obtenerStringPos(lis,1)[0],convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,1))),aux1);
                 if (!idValido(aux1))
-                    printf("Error: Numero de identificador del primer parametro no es valido");
+                    printf("Error: Numero de identificador del primer parametro no es valido\n");
                 else
                 {
                     if (!existeIdent(aux1, lexpre))
-                        printf("Error: La expresion no existe en la lista de expresiones");
+                        printf("Error: La expresion no existe en la lista de expresiones\n");
                     else
                     {
                         lis = lis->sig->sig;
                         str = lis->info;
                         if (!esAlfanumerico(str))
-                            printf("Error: El nombre de archivo no es valido");
+                            printf("Error: El nombre de archivo no es valido\n");
                         else
                         {
                             if (!extensionValida(str))
-                                printf ("\nFormato de archivo no valido");
+                                printf ("\nFormato de archivo no valido\n");
                             else
                             {
                                 if (existeArchivo(str))
                                 {
                                     printf ("\nEl archivo ya existe, desea sobrescribirlo (S/N)? ");
                                     char opc;
-
                                     scanf ("%c",&opc);
                                     fflush (stdin);
                                     if (cargarBooleano(opc))
@@ -361,11 +358,12 @@ int main()
                                         mostrarIdentificador (aux1);
                                         printf (" almacenada correctamente en ");
                                         mostrarString (str);
+                                        printf("\n");
                                         limpiarListaString(lis);
                                         fclose(f);
                                     }
                                     else
-                                        printf ("\nNo se sobresribira el archivo");
+                                        printf ("No se sobresribira el archivo\n");
                                 }
                                 else
                                 {
@@ -379,6 +377,7 @@ int main()
                                     mostrarIdentificador (aux1);
                                     printf (" almacenada correctamente en ");
                                     mostrarString (str);
+                                    printf("\n");
                                     limpiarListaString(lis);
                                     fclose(f);
                                 }
@@ -395,17 +394,17 @@ int main()
             identificador id;
 
             if (contarNodos(lis) != 2)
-                printf("Error: Se esperaba un nombre de archivo");
+                printf("Error: Se esperaba un nombre de archivo\n");
             else
             {
                 string str = obtenerStringPos(lis,1);
                 //str = lis->info;
                 if (!esAlfanumerico(str))
-                    printf("Error: El nombre de archivo no es valido");
+                    printf("Error: El nombre de archivo no es valido\n");
                 else
                 {
                     if (!extensionValida(str))
-                        printf ("\nFormato de archivo no valido");
+                        printf ("\nFormato de archivo no valido\n");
                     else
                     {
                         if (existeArchivo(str))
@@ -419,13 +418,14 @@ int main()
                             //cargarExpresionR(id, arb, expR);
                             cargarExpresionR(id, auxArbol, expR);
                             mostrarExpresionR(expR,TRUE);
+                            printf("\n");
                             guardarExpreAlFinal(expR,lexpre);
                             limpiarListaString(lis);
                             fclose(f);
                         }
                         else
                         {
-                            printf ("\nError: el archivo no existe");
+                            printf ("Error: el archivo no existe\n");
                             limpiarListaString(lis);
                         }
                     }
@@ -436,7 +436,7 @@ int main()
         else if (comparoString(comando, "quit"))
         {
             if (contarNodos(lis) != 1)
-                printf ("No se esperaba ningun parametro");
+                printf ("No se esperaba ningun parametro\n");
             else
             {
                 char opcion;
