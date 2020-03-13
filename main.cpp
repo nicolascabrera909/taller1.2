@@ -445,9 +445,8 @@ int main()
                 if (cargarBooleano(opcion))
                 {
                     if(!esVacia(lexpre))
-                        borrarListaExpre (lexpre);
-                    if (esVacia(lexpre))
-                        printf ("Resultado: hasta la proxima!");
+                        borrarListaExpre(lexpre);
+                    printf("Resultado: hasta la proxima!");
                     salir = TRUE;
                 }
             }
