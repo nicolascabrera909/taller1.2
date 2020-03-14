@@ -33,7 +33,7 @@ void mostrarString (string s)
 {
     int i=0;
     //Soliciar en el main lo que se quiere mostrar
-    while (s [i] != '\0')
+    while (s[i] != '\0')
     {
         printf("%c",s[i]);
         i++;
@@ -189,26 +189,23 @@ boolean esNumero (string s)
     }
     return valido;
 }
-
+/*
 //Devuelve si la letra es "e" o no
 boolean esLetraE (string s)
 {
-    int i = 0, contador = 0;
-    boolean valido = TRUE;
-    while (s[i] != '\0')
+    int i = 0;
+    boolean valido = FALSE;
+    while (s[i] != '\0' && !valido)
     {
-        if (s[i] != 'e')
-            valido = FALSE;
-        else
+        if ( s[i] == 'e')
         {
-            contador++;
-            i++;
+            valido = TRUE;
         }
-        if (contador != 1)
-            valido = FALSE;
+        else
+            i++;
     }
     return valido;
-}
+}*/
 
 //Verifico si el nombre es alfanumérico
 /*boolean esAlfanumerico(string s)
@@ -388,7 +385,7 @@ string cortoNumeroDeExpresion(string s)
 
     return resultado;
 }
-
+/*
 //separo la letra de un string
 string cortoLetraDeExpresion (string s)
 {
@@ -405,3 +402,4 @@ string cortoLetraDeExpresion (string s)
     }
     return resultado;
 }
+*/
