@@ -357,8 +357,13 @@ int main()
                     printf("Error: Se esperaban dos parametros\n");
                 else
                 {
-                    int numExp1 = convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,1)));
-                    crearIdent(E,numExp1,id);
+                    string stringpos, numexpre;
+                    strCrear(stringpos);
+                    strCrear(numexpre);
+                    stringpos = obtenerStringPos(lis,1);
+                    numexpre = cortoNumeroDeExpresion(stringpos);
+                    int numExp1 = convertirString(numexpre);
+                    crearIdent(stringpos[0],numExp1,id);
                     if (!idValido(id))
                         printf("Error: La expresion contiene un formato invalido\n");
                     else
