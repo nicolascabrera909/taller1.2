@@ -98,24 +98,28 @@ int main()
                         printf("No existen expresiones creadas\n");
                     else
                     {
-                        string stringpos1, numexpre1, letraexpre1;
+                        identificador aux1;
+                        string stringpos1, numexpre1;
                         strCrear(stringpos1);
                         strCrear(numexpre1);
-                        strCrear(letraexpre1);
                         stringpos1 = obtenerStringPos(lis,1);
                         numexpre1 = cortoNumeroDeExpresion(stringpos1);
-                        letraexpre1 = cortoLetraDeExpresion(stringpos1);
-                        if(!esNumero(numexpre1))
-                            printf("Error: La primera expresion no existe en la lista de expresiones\n");
+                        int conversion = convertirString(numexpre1);
+                        crearIdent(stringpos1[0],conversion,aux1);
+                        if (!idValido(aux1))
+                            printf("Error: La primer expresion contiene un formato invalido\n");
                         else
                         {
+                            identificador aux2;
                             string stringpos2, numexpre2;
                             strCrear(stringpos2);
                             strCrear(numexpre2);
                             stringpos2 = obtenerStringPos(lis,2);
                             numexpre2 = cortoNumeroDeExpresion(stringpos2);
-                            if(!esNumero(numexpre2))
-                                printf("Error: La segunda expresion no existe en la lista de expresiones\n");
+                            int conversion = convertirString(numexpre2);
+                            crearIdent(stringpos2[0],conversion,aux2);
+                            if(!idValido(aux2))
+                                printf("Error: La segunda expresion contiene un formato invalido\n");
                             else
                             {
                                 int conversion1 = convertirString(numexpre1), conversion2 = convertirString(numexpre2);
@@ -129,13 +133,13 @@ int main()
                                 switch(bandera)
                                 {
                                 case 0:
-                                    printf("Error: las expresiones no existen\n");
+                                    printf("Error: Las expresiones no existen en la lista\n");
                                     break;
                                 case 1:
-                                    printf("Error: la segunda expresion no existe\n");
+                                    printf("Error: La segunda expresion no existe en la lista\n");
                                     break;
                                 case 2:
-                                    printf("Error: la primera expresion no existe\n");
+                                    printf("Error: La primera expresion no existe en la lista\n");
                                     break;
                                 }
                                 if(bandera==3)
@@ -189,22 +193,28 @@ int main()
                         printf("No existen expresiones creadas\n");
                     else
                     {
+                        identificador aux1;
                         string stringpos1, numexpre1;
                         strCrear(stringpos1);
                         strCrear(numexpre1);
                         stringpos1 = obtenerStringPos(lis,1);
                         numexpre1 = cortoNumeroDeExpresion(stringpos1);
-                        if(!esNumero(numexpre1))
-                            printf("Error: la primera expresion no es correcta\n");
+                        int conversion = convertirString(numexpre1);
+                        crearIdent(stringpos1[0],conversion,aux1);
+                        if(!idValido(aux1))
+                            printf("Error: La primer expresion contiene un formato invalido\n");
                         else
                         {
+                            identificador aux2;
                             string stringpos2, numexpre2;
                             strCrear(stringpos2);
                             strCrear(numexpre2);
                             stringpos2 = obtenerStringPos(lis,2);
                             numexpre2 = cortoNumeroDeExpresion(stringpos2);
-                            if(!esNumero(numexpre2))
-                                printf("Error: la segunda expresion no es correcta\n");
+                            int conversion = convertirString(numexpre2);
+                            crearIdent(stringpos2[0],conversion,aux2);
+                            if(!idValido(aux2))
+                                printf("Error: La segunda expresion contiene un formato invalido\n");
                             else
                             {
                                 int conversion1 = convertirString(numexpre1), conversion2 = convertirString(numexpre2);
@@ -218,13 +228,13 @@ int main()
                                 switch(bandera)
                                 {
                                 case 0:
-                                    printf("Error: las expresiones no existen\n");
+                                    printf("Error: Las expresiones no existen en la lista\n");
                                     break;
                                 case 1:
-                                    printf("Error: la segunda expresion no existe\n");
+                                    printf("Error: La segunda expresion no existe en la lista\n");
                                     break;
                                 case 2:
-                                    printf("Error: la primera expresion no existe\n");
+                                    printf("Error: La primera expresion no existe en la lista\n");
                                     break;
                                 }
                                 if(bandera==3)
@@ -257,10 +267,8 @@ int main()
                                     printf("\n");
                                     limpiarListaString(lis);
                                 }
-
                             }
                         }
-
                     }
                 }
             }
@@ -281,6 +289,7 @@ int main()
                         printf("No existen expresiones creadas\n");
                     else
                     {
+                        identificador aux1, aux2;
                         string stringpos1, stringpos2, numexpre1, numexpre2;
                         strCrear(stringpos1);
                         strCrear(stringpos2);
@@ -290,27 +299,36 @@ int main()
                         stringpos2 = obtenerStringPos(lis,2);
                         numexpre1 = cortoNumeroDeExpresion(stringpos1);
                         numexpre2 = cortoNumeroDeExpresion(stringpos2);
-                        int numExp1 = convertirString(numexpre1);
-                        crearIdent(E,numExp1,idaux1);
-                        int numExp2 = convertirString(numexpre2);
-                        crearIdent(E,numExp2,idaux2);
-                        if (!existeIdent(idaux1, lexpre))
-                            printf("Error: El primer parametro no existe en la lista de expresiones\n");
+                        int conversion1 = convertirString(numexpre1), conversion2 = convertirString(numexpre2);
+                        crearIdent(stringpos1[0],conversion1,idaux1);
+                        crearIdent(stringpos2[0],conversion2,idaux2);
+                        if (!idValido(idaux1))
+                            printf("Error: La primer expresion contiene un formato invalido\n");
                         else
                         {
-                            if (!existeIdent(idaux2, lexpre))
-                                printf("Error: El segundo parametro no existe en la lista de expresiones\n");
+                            if (!idValido(idaux2))
+                                printf("Error: La segunda expresion contiene un formato invalido\n");
                             else
                             {
-                                obtenerExpresionRDeLista(idaux1, lexpre, expR);
-                                obtenerExpresionRDeLista(idaux2, lexpre, expR2);
-                                arbaux1 = obtenerArbol(expR);
-                                arbaux2 = obtenerArbol(expR2);
-                                if (!comparoArbol(arbaux1, arbaux2))
-                                    printf("Resultado: Las expresiones no son iguales\n");
+                                if (!existeIdent(idaux1, lexpre))
+                                    printf("Error: La primera expresion no existe en la lista\n");
                                 else
-                                    printf("Resultado: Las expresiones son iguales\n");
-                                limpiarListaString(lis);
+                                {
+                                    if (!existeIdent(idaux2, lexpre))
+                                        printf("Error: La segunda expresion no existe en la lista\n");
+                                    else
+                                    {
+                                        obtenerExpresionRDeLista(idaux1, lexpre, expR);
+                                        obtenerExpresionRDeLista(idaux2, lexpre, expR2);
+                                        arbaux1 = obtenerArbol(expR);
+                                        arbaux2 = obtenerArbol(expR2);
+                                        if (!comparoArbol(arbaux1, arbaux2))
+                                            printf("Resultado: Las expresiones no son iguales\n");
+                                        else
+                                            printf("Resultado: Las expresiones son iguales\n");
+                                        limpiarListaString(lis);
+                                    }
+                                }
                             }
                         }
                     }
@@ -342,11 +360,11 @@ int main()
                     int numExp1 = convertirString(cortoNumeroDeExpresion(obtenerStringPos(lis,1)));
                     crearIdent(E,numExp1,id);
                     if (!idValido(id))
-                        printf("Error: La expresion no es valida\n");
+                        printf("Error: La expresion contiene un formato invalido\n");
                     else
                     {
                         if (!existeIdent(id, lexpre))
-                            printf("Error: La expresion no existe en la lista de expresiones\n");
+                            printf("Error: La expresion no existe en la lista\n");
                         else
                         {
                             string numEval = obtenerStringPos(lis,2);
@@ -380,7 +398,7 @@ int main()
                     int conversion = convertirString(numexpre);
                     crearIdent(stringpos[0],conversion,aux1);
                     if (!idValido(aux1))
-                        printf("Error: Numero de identificador del primer parametro no es valido\n");
+                        printf("Error: La expresion contiene un formato invalido\n");
                     else
                     {
                         if (!existeIdent(aux1, lexpre))
