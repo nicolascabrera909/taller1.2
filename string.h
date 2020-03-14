@@ -42,10 +42,10 @@ boolean esVariable (string s);
 
 //Devuelve si es un numero o no
 boolean esNumero (string s);
-
+/*
 //Devuelve si la letra es e o no
 boolean esLetraE (string s);
-
+*/
 //Libera memoria dinamica del string
 void liberarMemoriaString (string &s);
 
@@ -66,8 +66,8 @@ void strcon(string & texto1,string texto2);
 
 //separo el numero de un string
 string cortoNumeroDeExpresion (string s);
-
+/*
 //separo la letra de un string
 string cortoLetraDeExpresion (string s);
-
+*/
 #endif // STRING_H_INCLUDED
