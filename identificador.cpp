@@ -1,19 +1,33 @@
 #include "identificador.h"
 
-//Crea identificador de expresiÃ³n
+//Crea identificador de expresión
 void crearIdent (char E, int maxNum, identificador &id)
 {
     id.id = E;
     id.posicion = maxNum;
 }
 
+//SELECTORAS
+//obtengo el id del identificador
+char obtengoID(identificador id)
+{
+    return id.id;
+}
+
+//obtengo la posicion del identificador
+int obtengoPosicion(identificador id)
+{
+    return id.posicion;
+}
+
 //Valida que la letra sea "e" y el numero del identificador sea un NUMERO y que es mayor que cero
 boolean idValido (identificador ident)
 {
-    if ((ident.posicion <= 2147483647 && ident.posicion >=0) && ident.id == 'e')
-            return TRUE;
-        else
-            return FALSE;
+
+    if ((obtengoPosicion(ident) <= 2147483647 && obtengoPosicion(ident) >=0) && obtengoID(ident) == 'e')
+        return TRUE;
+    else
+        return FALSE;
 }
 
 //Bajar identificador a archivo
@@ -30,18 +44,7 @@ void subirIdentificador (identificador &i, FILE * f)
     fread (&i.posicion, sizeof (int), 1, f);
 }
 
-//SELECTORAS
-//obtengo el id del identificador
-char obtengoID(identificador id)
-{
-    return id.id;
-}
 
-//obtengo la posicion del identificador
-int obtengoPosicion(identificador id)
-{
-   return id.posicion;
-}
 
 // comparo si dos identificadore son iguales
 boolean IdentificdoresSonIguales (identificador ident1,identificador ident2)
@@ -55,5 +58,5 @@ boolean IdentificdoresSonIguales (identificador ident1,identificador ident2)
 //mostrar identificador por pantalla
 void mostrarIdentificador(identificador i)
 {
-    printf("%c%d", obtengoID(i) , obtengoPosicion(i));
+    printf("%c%d", obtengoID(i), obtengoPosicion(i));
 }

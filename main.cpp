@@ -108,7 +108,7 @@ int main()
                         crearIdent(stringpos2[0],conversion,aux2);
                         int validador=0;
 
-                        if (!idValido(aux1))
+                        if(!idValido(aux1))
                             validador=validador+1;
                         if(!idValido(aux2))
                             validador=validador+2;
@@ -449,7 +449,7 @@ int main()
                                 else
                                 {
                                     if (!extensionValida(str))
-                                        printf ("\nFormato de archivo no valido\n");
+                                        printf ("Error:Formato de archivo no valido\n");
                                     else
                                     {
                                         if (existeArchivo(str))
