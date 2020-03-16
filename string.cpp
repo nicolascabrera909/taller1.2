@@ -142,7 +142,7 @@ int potencia (int base, int exp)
     return base;
 }
 
-//Convierte strings de nÃºmeros a tipo de dato int. PRECONDICIÃ“N: el string solo contiene nÃºmeros
+//Convierte strings de números a tipo de dato int. PRECONDICIÓN: el string solo contiene números
 int convertirString (string s)
 {
     int i = 0;
@@ -167,10 +167,11 @@ int convertirString (string s)
 boolean esVariable (string s)
 {
     int i=0;
+    boolean resultado=FALSE;
     if ((s[i] == 88 || s[i] == 120 )&& strlar(s)==1)
-        return TRUE;
-    else
-        return FALSE;
+        resultado=TRUE;
+    return resultado;
+
 }
 
 //Devuelve si es un numero valido o no
@@ -178,15 +179,19 @@ boolean esNumero (string s)
 {
     int i = 0;
     boolean valido = FALSE;
-    while (s[i] != '\0' && s[i] != '-' && !valido)
+    int contador=0;
+    while (s[i] != '\0' /*&& s[i] != '-' && !valido*/)
     {
         if ( s[i] < 58 && s[i] > 47 )
         {
-            valido = TRUE;
+            contador++;
         }
-        else
-            i++;
+        i++;
+
+
     }
+    if(contador==i)
+        valido=TRUE;
     return valido;
 }
 /*
@@ -207,7 +212,7 @@ boolean esLetraE (string s)
     return valido;
 }*/
 
-//Verifico si el nombre es alfanumÃ©rico
+//Verifico si el nombre es alfanumérico
 /*boolean esAlfanumerico(string s)
 {
     int i = 0;
@@ -243,14 +248,14 @@ boolean esAlfanumerico(string s)
     int i = 0;
     while (s[i] != '\0' &&  s[i]!=46)
     {
-      if (((64 < s[i] && s[i] < 91) || (96 < s[i] && s[i]< 123) || (47 < s[i] && s[i] < 58)))
-        i++;
-      else
-        return FALSE;
+        if (((64 < s[i] && s[i] < 91) || (96 < s[i] && s[i]< 123) || (47 < s[i] && s[i] < 58)))
+            i++;
+        else
+            return FALSE;
     }
 }
 
-//VerificÃ³ extensiÃ³n del archivo es .dat
+//Verificó extensión del archivo es .dat
 /*boolean extensionValida(string s1)
 {
     string sAux;
@@ -283,11 +288,11 @@ boolean extensionValida(string s1)
     int j=0;
     boolean valido = FALSE;
     while (s1[i] != '\0' )
-      {
-          sAux[j] = s1[i];
-          i++;
-          j++;
-      }
+    {
+        sAux[j] = s1[i];
+        i++;
+        j++;
+    }
     sAux[j]='\0';
     string s2;
     strCrear(s2);
@@ -315,17 +320,17 @@ boolean extensionValida(string s1)
 
 boolean contarPuntos(string s)
 {
-  int i = 0, puntos = 0;
-  while (s[i] != '\0' && puntos != 2)
+    int i = 0, puntos = 0;
+    while (s[i] != '\0' && puntos != 2)
     {
-      if (s[i] == '.')
-        puntos++;
-      i++;
+        if (s[i] == '.')
+            puntos++;
+        i++;
     }
-  if (puntos == 1)
-    return TRUE; //no supera la cantidad maxima
-  else
-    return FALSE; //upera la cantidad maxima
+    if (puntos == 1)
+        return TRUE; //no supera la cantidad maxima
+    else
+        return FALSE; //upera la cantidad maxima
 }
 
 // agrego de a un carater a un string
