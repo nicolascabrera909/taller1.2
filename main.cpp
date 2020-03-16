@@ -121,7 +121,7 @@ int main()
                             printf("Error: La segunda expresion contiene un formato invalido\n");
                             break;
                         case 3:
-                            printf("Error: Las expresiones contiene un formato invalido\n");
+                            printf("Error: Las expresiones contienen un formato invalido\n");
                             break;
                         }
 
@@ -230,7 +230,7 @@ int main()
                             printf("Error: La segunda expresion contiene un formato invalido\n");
                             break;
                         case 3:
-                            printf("Error: Las expresiones contiene un formato invalido\n");
+                            printf("Error: Las expresiones contienen un formato invalido\n");
                             break;
                         }
 
@@ -271,7 +271,7 @@ int main()
                                 copiarTodosLosNodos(arbol1,newArbol1);
                                 copiarTodosLosNodos(arbol2,newArbol2);
                                 cargarArbolNoAtomico(arb,tipoExpre,newArbol1,newArbol2);
-                                //creo la expre resultante, el nuevo identificador, la expresion y lo  agregoa la lista
+                                //creo la expre resultante, el nuevo identificador, la expresion y los agrego a la lista
                                 identificador id3;
                                 int maximo = maxId(lexpre)+1;
                                 crearIdent(E,maximo,id3);
@@ -307,7 +307,6 @@ int main()
                         printf("No existen expresiones creadas\n");
                     else
                     {
-                        identificador aux1, aux2;
                         string stringpos1, stringpos2, numexpre1, numexpre2;
                         strCrear(stringpos1);
                         strCrear(stringpos2);
@@ -441,15 +440,15 @@ int main()
                         {
                             str = obtenerStringPos(lis,2);
                             if (!contarPuntos(str))
-                                printf ("Error: nombre de archivo no valido\n");
+                                printf ("Error: Nombre de archivo no valido\n");
                             else
                             {
                                 if (!esAlfanumerico(str))
-                                    printf("Error: nombre de archivo no es valido en es alfanumerico\n");
+                                    printf("Error: Nombre de archivo no es valido, no es alfanumerico\n");
                                 else
                                 {
                                     if (!extensionValida(str))
-                                        printf ("Error:Formato de archivo no valido\n");
+                                        printf ("Error: Formato de archivo no valido\n");
                                     else
                                     {
                                         if (existeArchivo(str))
@@ -511,13 +510,12 @@ int main()
                 else
                 {
                     string str = obtenerStringPos(lis,1);
-                    //str = lis->info;
                     if (!esAlfanumerico(str))
                         printf("Error: El nombre de archivo no es valido\n");
                     else
                     {
                         if (!extensionValida(str))
-                            printf ("\nFormato de archivo no valido\n");
+                            printf ("Formato de archivo no valido\n");
                         else
                         {
                             if (existeArchivo(str))
@@ -528,8 +526,6 @@ int main()
                                 crearIdent(E,maximo,id);
                                 FILE * f=fopen(str,"rb");
                                 subirExpR(f,auxArbol);
-                                //subirExpR(f,arb);
-                                //cargarExpresionR(id, arb, expR);
                                 cargarExpresionR(id, auxArbol, expR);
                                 mostrarExpresionR(expR,TRUE);
                                 printf("\n");

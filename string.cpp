@@ -1,6 +1,5 @@
 #include "string.h"
 
-
 //Crear string con puntero
 void strCrear(string &s)
 {
@@ -28,7 +27,7 @@ void cargarString (string &s)
     s=auxS;
 }
 
-//Mostrar string por pantalla
+//Mostrar string en pantalla
 void mostrarString (string s)
 {
     int i=0;
@@ -40,7 +39,7 @@ void mostrarString (string s)
     }
 }
 
-//Mostrar string por pantalla
+//Dice si el string es vacio
 boolean stringVacio (string s)
 {
 
@@ -76,8 +75,6 @@ void bajarString (string s, FILE * f)
 void subirString (string &s, FILE * f)
 {
     int i=0;
-    //char car;
-    //stCrear(auxS)
     string auxS= new char[MAX];
     fread(&auxS[i],sizeof(char),1,f);
     while (auxS[i]!='\0')
@@ -86,7 +83,6 @@ void subirString (string &s, FILE * f)
         fread(&auxS[i],sizeof(char),1,f);
     }
     strcop(s, auxS);
-    // liberarMemoriaString(auxS);
 }
 
 //Compara dos strings si son iguales
@@ -189,7 +185,7 @@ boolean esNumero (string s)
     int i = 0;
     boolean valido = FALSE;
     int contador=0;
-    while (s[i] != '\0' /*&& s[i] != '-' && !valido*/)
+    while (s[i] != '\0')
     {
         if(s[i] ==45 && i==0)
         {
@@ -206,54 +202,6 @@ boolean esNumero (string s)
         valido=TRUE;
     return valido;
 }
-/*
-//Devuelve si la letra es "e" o no
-boolean esLetraE (string s)
-{
-    int i = 0;
-    boolean valido = FALSE;
-    while (s[i] != '\0' && !valido)
-    {
-        if ( s[i] == 'e')
-        {
-            valido = TRUE;
-        }
-        else
-            i++;
-    }
-    return valido;
-}*/
-
-//Verifico si el nombre es alfanumérico
-/*boolean esAlfanumerico(string s)
-{
-    int i = 0;
-    boolean letra=FALSE;
-    boolean numero=FALSE;
-    int acumulado=0;
-    boolean alfanumerico=FALSE;
-
-    while (s[i] != '\0' && !alfanumerico &&  s[i]!=46 )
-    {
-        if((64 < s[i] && s[i] < 91) || (96 < s[i] && s[i]< 123 ))
-        {
-            letra=TRUE;
-            acumulado ++;
-        }
-
-        if( (47 < s[i] && s[i] < 58) )
-        {
-            numero=TRUE;
-            acumulado ++;
-        }
-
-        i++;
-    }
-    if(acumulado==i)
-        alfanumerico=TRUE;
-
-    return alfanumerico;
-}*/
 
 boolean esAlfanumerico(string s)
 {
@@ -266,31 +214,6 @@ boolean esAlfanumerico(string s)
             return FALSE;
     }
 }
-
-//Verificó extensión del archivo es .dat
-/*boolean extensionValida(string s1)
-{
-    string sAux;
-    strCrear (sAux);
-    int i = (strlar (s1)) - 4;
-    int j=0;
-    boolean valido = FALSE;
-    if(contarPuntos(s1))
-    {
-        while (!valido && s1[i] != '\0' )
-        {
-            sAux[j] = s1[i];
-            i++;
-            j++;
-        }
-        sAux[j]='\0';
-        string s2;
-        strCrear(s2);
-        s2 = ".dat";
-        valido = comparoString (sAux, s2);
-    }
-    return valido;
-}*/
 
 boolean extensionValida(string s1)
 {
@@ -313,23 +236,6 @@ boolean extensionValida(string s1)
     return valido;
 }
 
-//Contar puntos en el nombre del archivo
-/*boolean contarPuntos(string s)
-{
-    int i=0;
-    boolean resultado=FALSE;
-    int contador=0;
-    while (s[i]!='\0' && !contador>1 )
-    {
-        if(s[i]=='.')
-            contador++;
-        i++;
-    }
-    if(contador==1)
-        resultado=TRUE;
-    return resultado;
-}*/
-
 boolean contarPuntos(string s)
 {
     int i = 0, puntos = 0;
@@ -345,7 +251,7 @@ boolean contarPuntos(string s)
         return FALSE; //upera la cantidad maxima
 }
 
-// agrego de a un carater a un string
+//Agrego de a un carater a un string
 void agregoCharAString(char a, string &s)
 {
     int largo=2;
@@ -385,7 +291,7 @@ void strcon(string &texto1,string texto2)
 
 }
 
-//separo los numero de un string
+//Separo los numero de un string
 string cortoNumeroDeExpresion(string s)
 {
     string resultado;
@@ -402,21 +308,3 @@ string cortoNumeroDeExpresion(string s)
 
     return resultado;
 }
-/*
-//separo la letra de un string
-string cortoLetraDeExpresion (string s)
-{
-    string resultado;
-    strCrear(resultado);
-    int i=0;
-    while(s[i]!='\0')
-    {
-        if(s[i]=='e')
-        {
-            agregoCharAString(s[i],resultado);
-        }
-        i++;
-    }
-    return resultado;
-}
-*/
