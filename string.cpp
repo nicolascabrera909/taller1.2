@@ -146,20 +146,29 @@ int potencia (int base, int exp)
 int convertirString (string s)
 {
     int i = 0;
+    boolean esNagativo=FALSE;
     int numero = 0;
     int largo = strlar(s);
-    if(largo==1)
+    if(largo==1 && s[i] !=45)
     {
         numero = s[0] - 48;
     }
     else
     {
+        if(s[i]==45)
+        {
+            i=1;
+            esNagativo=TRUE;
+        }
         int num = largo;
-        for (i=0; i<num; i++)
+        for (i; i<num; i++)
         {
             numero = numero + ((s[i] - 48) * potencia (10, num - 1 - i));
         }
+        if(esNagativo)
+         numero=numero * -1;
     }
+
     return numero;
 }
 
@@ -182,13 +191,16 @@ boolean esNumero (string s)
     int contador=0;
     while (s[i] != '\0' /*&& s[i] != '-' && !valido*/)
     {
+        if(s[i] ==45 && i==0)
+        {
+            i++;
+            contador++;
+        }
         if ( s[i] < 58 && s[i] > 47 )
         {
             contador++;
         }
         i++;
-
-
     }
     if(contador==i)
         valido=TRUE;

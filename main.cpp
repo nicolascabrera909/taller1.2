@@ -53,13 +53,13 @@ int main()
                         {
                             int maximo = maxId(lexpre)+1;
                             crearIdent(E,maximo,id);
-                            if(contador=1)
+                            if(contador==1)
                             {
                                 crearTipoExpresionVariable('x',tipoExpre);
                             }
                             else
                             {
-                                int conversion = convertirString(str);
+                                int conversion = convertirString(stringpos);
                                 crearTipoExpresionNumero(conversion,tipoExpre);
                             }
                             cargarArbolAtomico(arb,tipoExpre);
