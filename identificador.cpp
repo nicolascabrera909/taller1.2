@@ -24,7 +24,7 @@ int obtengoPosicion(identificador id)
 boolean idValido (identificador ident)
 {
 
-    if ((obtengoPosicion(ident) <= 2147483647 && obtengoPosicion(ident) >=0) && obtengoID(ident) == 'e')
+    if ((obtengoPosicion(ident) <= 2147483647 && obtengoPosicion(ident) >0) && obtengoID(ident) == 'e')
         return TRUE;
     else
         return FALSE;
