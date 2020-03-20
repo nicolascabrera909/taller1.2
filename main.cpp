@@ -159,7 +159,7 @@ int main()
                                 copiarTodosLosNodos(arbol1,newArbol1);
                                 copiarTodosLosNodos(arbol2,newArbol2);
                                 cargarArbolNoAtomico(arb,tipoExpre,newArbol1,newArbol2);
-                                //creo la expre resultante, el nuevo identificador, la expresion y lo  agregoa la lista
+                                //creo la expre resultante, el nuevo identificador, la expresion y lo agrego a la lista
                                 identificador id3;
                                 int maximo = maxId(lexpre)+1;
                                 crearIdent(E,maximo,id3);
@@ -265,7 +265,7 @@ int main()
                                 copiarTodosLosNodos(arbol1,newArbol1);
                                 copiarTodosLosNodos(arbol2,newArbol2);
                                 cargarArbolNoAtomico(arb,tipoExpre,newArbol1,newArbol2);
-                                //creo la expre resultante, el nuevo identificador, la expresion y lo  agregoa la lista
+                                //creo la expre resultante, el nuevo identificador, la expresion y lo agrego a la lista
                                 identificador id3;
                                 int maximo = maxId(lexpre)+1;
                                 crearIdent(E,maximo,id3);
@@ -477,7 +477,6 @@ int main()
                                             numerarNodos(auxArbol,n);
                                             FILE * f = fopen (str, "wb");
                                             bajarExpR(expR, f);
-                                            //sobrescribirArchivo (str, expR);
                                             mostrarIdentificador (aux1);
                                             printf (" almacenada correctamente en ");
                                             mostrarString (str);
@@ -505,7 +504,7 @@ int main()
                 {
                     string str = obtenerStringPos(lis,1);
                     if (!esAlfanumerico(str))
-                        printf("Error: El nombre de archivo no es valido\n");
+                        printf("Error: El nombre de archivo no es valido, no es alfanumerico\n");
                     else
                     {
                         if (!extensionValida(str))
@@ -529,7 +528,7 @@ int main()
                             }
                             else
                             {
-                                printf ("Error: el archivo no existe\n");
+                                printf ("Error: El archivo no existe\n");
                                 limpiarListaString(lis);
                             }
                         }
